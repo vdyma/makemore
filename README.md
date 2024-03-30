@@ -1,6 +1,6 @@
-# Character-based n-gram models
+# Character-level n-gram models
 
-Implementation of character-based n-gram models. Simple model uses character counts and an advanced model is a single-neuron neural network.
+Implementation of character-level n-gram models. Simple model uses character counts and an advanced model is a single-neuron neural network.
 
 ## Installation
 
