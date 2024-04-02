@@ -8,9 +8,12 @@ def load_data(
     test_size: int | float = 0,
     train_size: int | float = 1,
     seed: int = 0,
+    special_token: str = ".",
 ) -> dict[str, object]:
-    words = open(file_path, "r").read().split()
-    special_token = "."
+    text = open(file_path, "r", encoding="utf8").read()
+    if special_token in text:
+        raise ValueError(f"Special token '{special_token}' is present in the data.")
+    words = text.split("\n")
     alphabet = [special_token] + sorted(list(set("".join(words))))
     itos = dict((i, s) for i, s in enumerate(alphabet))  # index to string
     stoi = dict((s, i) for i, s in itos.items())
