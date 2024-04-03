@@ -177,8 +177,10 @@ def train_nn(
             print(f"Epoch: {i}\tLoss: {loss.item()}")
 
         model["W"].grad = None
+        model["b"].grad = None
         loss.backward()
         model["W"].data += -alpha * model["W"].grad
+        model["b"].data += -alpha * model["b"].grad
 
     return loss_history
 
