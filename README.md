@@ -2,6 +2,8 @@
 
 Implementation of character-level n-gram models. Simple model uses character counts and an advanced model is a single-neuron neural network.
 
+The implementation is intentionally left naive and over-simplified for demonstration and education purposes.
+
 ## Installation
 
 Clone this repository and create environment using conda:
