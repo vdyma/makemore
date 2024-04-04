@@ -125,7 +125,11 @@ def prepare_for_nn(
     num_classes = len(stoi)
 
     for word in words:
-        processed_word = [special_token] + list(word) + [special_token]
+        processed_word = (
+            list(special_token for _ in range(num_grams - 1))
+            + list(word)
+            + [special_token]
+        )
         zipped_word = zip(*[processed_word[i:] for i in range(num_grams)])
         for chars in zipped_word:
             xs.append(
@@ -161,7 +165,7 @@ def train_nn(
     labels: torch.Tensor,
     model: dict[str, torch.Tensor],
     epochs: int = 100,
-    alpha: float = 50.0,
+    alpha: float = 10.0,
     regularization_param: float = 0.01,
     verbose: bool = True,
 ) -> torch.Tensor:
